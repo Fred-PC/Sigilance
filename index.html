@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-    <!-- ═══ Script anti-flash: aplica o tema ANTES da página renderizar ═══ -->
+    <!-- ═══ Anti-flash: aplica o tema ANTES da página renderizar ═══ -->
     <script>
         (function(){
             var t = localStorage.getItem('sigilance-theme');
@@ -38,7 +38,7 @@
            │  1. TEMA CLARO (Padrão — estilo IBM / SAP)                 │
            │  Estas cores aparecem quando o tema está em "claro".        │
            └──────────────────────────────────────────────────────────────┘ */
-        :root, [data-theme="light"] {
+        [data-theme="light"] {
 
             /* Fundo principal (o "papel de parede" do site inteiro) */
             --bg-primary: #ffffff;
@@ -59,7 +59,7 @@
             --text-secondary: #565e6c;
 
             /* Cor do texto fraco (copyright, legendas pequenas) */
-            --text-muted: #8d929b;
+            --text-muted: #6b7280;
 
             /* Cor das bordas (linhas divisoras, contornos de cards) */
             --border-color: #dfe1e6;
@@ -143,7 +143,7 @@
            │  OPACIDADE: 0=invisível | 0.03=muito sutil | 0.07=visível  │
            │              0.12=bem visível | 0.20=muito forte            │
            │                                                             │
-           │  FILTRO:                                                     │
+           │  FILTRO DA WATERMARK:                                       │
            │    Sua watermark.png é ESCURA (preto/cinza escuro)?         │
            │      → Tema CLARO: aparece naturalmente. Deixe "none".      │
            │      → Tema ESCURO: mude para "invert(1)".                  │
@@ -151,18 +151,44 @@
            │      → Tema CLARO: mude para "invert(1)".                   │
            │      → Tema ESCURO: aparece naturalmente. Deixe "none".     │
            └──────────────────────────────────────────────────────────────┘ */
-        :root, [data-theme="light"] {
+        [data-theme="light"] {
             --watermark-opacity: 0.07;
-            --watermark-filter: none;       /* ← mude para invert(1) se necessário */
+            --watermark-filter: none;
         }
         [data-theme="dark"] {
             --watermark-opacity: 0.05;
-            --watermark-filter: none;       /* ← mude para invert(1) se necessário */
+            --watermark-filter: none;
         }
 
 
         /* ┌──────────────────────────────────────────────────────────────┐
-           │  4. FONTE (Tipografia)                                      │
+           │  4. LOGO (Controle de cor da logo.png)                     │
+           │                                                             │
+           │  Sua logo tem letras/fundo CLARO e some no tema claro?      │
+           │    → Tema CLARO: mude para "invert(1)" (branco vira preto)  │
+           │    → Tema ESCURO: deixe "none" (branco fica visível)        │
+           │                                                             │
+           │  Opções de filtro:                                          │
+           │    none                    → sem alteração                  │
+           │    invert(1)               → inverte todas as cores          │
+           │    brightness(0)           → tudo fica preto (sem cor)       │
+           │    invert(1) hue-rotate(180deg) → inverte + ajusta matiz    │
+           │                                                             │
+           │  ⚠️ Se a logo tem cores específicas que nenhum filtro       │
+           │    preserva bem, a solução definitiva é ter dois PNGs       │
+           │    (logo-light.png e logo-dark.png) — me avise que eu       │
+           │    ajusto o código para trocar automaticamente.             │
+           └──────────────────────────────────────────────────────────────┘ */
+        [data-theme="light"] {
+            --logo-filter: invert(1);
+        }
+        [data-theme="dark"] {
+            --logo-filter: none;
+        }
+
+
+        /* ┌──────────────────────────────────────────────────────────────┐
+           │  5. FONTE (Tipografia)                                      │
            │  Para trocar a fonte, mude o link do Google Fonts           │
            │  lá em cima no <head> e altere o nome abaixo.               │
            │  Pesos: 300=fininha | 400=normal | 600=semi | 700=bold     │
@@ -174,11 +200,12 @@
 
 
         /* ┌──────────────────────────────────────────────────────────────┐
-           │  5. BLOCO DE CÓDIGO (Terminal / Mock de código)             │
+           │  6. BLOCO DE CÓDIGO (Terminal / Mock de código)             │
            │  Este bloco mantém aparência escura em AMBOS os temas.      │
            │  Edite as cores abaixo se quiser personalizar.              │
            └──────────────────────────────────────────────────────────────┘ */
-        :root {
+        [data-theme="light"],
+        [data-theme="dark"] {
             --code-bg: #0d1117;
             --code-text: #8b949e;
             --code-line: #c9d1d9;
@@ -200,18 +227,16 @@
             transition: background-color 0.35s ease, color 0.35s ease;
         }
 
-        /* Idioma */
         .lang-pt { display: none; }
         .lang-en { display: block; }
 
-        /* Transições suaves na troca de tema */
         header, section, footer, .t-card, .t-btn-primary, .t-btn-secondary,
-        .t-badge, .t-border, .t-header {
+        .t-badge, .t-header, .t-logo {
             transition: background-color 0.35s ease, color 0.35s ease,
-                        border-color 0.35s ease, box-shadow 0.35s ease;
+                        border-color 0.35s ease, box-shadow 0.35s ease,
+                        filter 0.35s ease;
         }
 
-        /* ── Utilitários de cor (atalhos para não usar style inline) ── */
         .t-text       { color: var(--text-primary); }
         .t-text-sec   { color: var(--text-secondary); }
         .t-text-mut   { color: var(--text-muted); }
@@ -230,6 +255,11 @@
             pointer-events: none;
             z-index: 0;
             transition: opacity 0.35s ease, filter 0.35s ease;
+        }
+
+        /* ── Logo ── */
+        .t-logo {
+            filter: var(--logo-filter);
         }
 
         /* ── Header ── */
@@ -408,11 +438,9 @@
             to   { opacity: 1; transform: translateY(0); }
         }
 
-        /* Z-index */
         section { position: relative; z-index: 10; }
         header, footer { position: relative; z-index: 50; }
 
-        /* Acessibilidade: respeita preferência de menos animação */
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after {
                 animation-duration: 0.01ms !important;
@@ -429,17 +457,14 @@
     <!-- ════════════ HEADER ════════════ -->
     <header class="fixed w-full z-50 t-header border-b">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <!-- Logo + Lema -->
             <div class="flex items-center gap-3">
                 <a href="#" class="hover:opacity-80 transition-opacity">
-                    <img src="logo.png" alt="Sigilance Logo" class="h-8 md:h-10">
+                    <img src="logo.png" alt="Sigilance Logo" class="h-8 md:h-10 t-logo">
                 </a>
                 <span class="hidden sm:inline text-[10px] uppercase tracking-[0.25em] t-text-mut font-light">
                     The Only Path
                 </span>
             </div>
-
-            <!-- Navegação Desktop + Controles -->
             <div class="flex items-center gap-3">
                 <nav class="hidden md:flex items-center space-x-8 text-sm font-medium tracking-widest uppercase">
                     <a href="#aria" class="t-header-link transition-colors">
@@ -451,20 +476,14 @@
                         <span class="lang-pt">O Arquiteto</span>
                     </a>
                 </nav>
-
-                <!-- Botão sol/lua -->
                 <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
                     <i class="fas fa-moon text-sm" id="themeIcon"></i>
                 </button>
-
-                <!-- Hamburger (mobile) -->
                 <button class="theme-toggle md:hidden" id="mobileMenuBtn" aria-label="Menu">
                     <i class="fas fa-bars text-sm" id="mobileMenuIcon"></i>
                 </button>
             </div>
         </div>
-
-        <!-- Menu Mobile -->
         <div class="mobile-menu md:hidden flex-col px-6 py-4 space-y-4" id="mobileMenu">
             <a href="#aria" class="t-header-link text-sm font-medium tracking-widest uppercase transition-colors">
                 <span class="lang-en">Project ARIA</span>
@@ -558,9 +577,7 @@
                     <span class="lang-pt">"Sigilance" — A fusão de "Sigil" (Selo de Autoridade) e "Vigilance" (Vigilância).</span>
                 </p>
             </div>
-
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Card 1 -->
                 <div class="t-card p-8 rounded-lg transition-all group">
                     <div class="t-accent mb-6 text-3xl group-hover:scale-110 transition-transform">
                         <i class="fas fa-shield-halved"></i>
@@ -574,7 +591,6 @@
                         <span class="lang-pt">Uma história profunda em Segurança SAP, navegando por ambientes globais complexos e ameaças em constante evolução.</span>
                     </p>
                 </div>
-                <!-- Card 2 -->
                 <div class="t-card p-8 rounded-lg transition-all group">
                     <div class="t-accent mb-6 text-3xl group-hover:scale-110 transition-transform">
                         <i class="fas fa-microchip"></i>
@@ -588,7 +604,6 @@
                         <span class="lang-pt">Expertise na última pilha de tecnologia SAP, garantindo transições seguras e eficientes para o S/4HANA.</span>
                     </p>
                 </div>
-                <!-- Card 3 -->
                 <div class="t-card p-8 rounded-lg transition-all group">
                     <div class="t-accent mb-6 text-3xl group-hover:scale-110 transition-transform">
                         <i class="fas fa-user-lock"></i>
@@ -608,21 +623,22 @@
 
 
     <!-- ════════════ FOOTER ════════════ -->
-    <footer class="py-12 border-t t-footer">
-        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
-            <div class="flex flex-col items-center md:items-start">
-                <div class="flex items-center gap-3 mb-4">
-                    <img src="logo.png" alt="Sigilance Logo" class="h-8">
+    <footer class="t-footer">
+        <!-- Linha 1: Logo + Copyright -->
+        <div class="border-b" style="border-color: var(--border-color)">
+            <div class="max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row justify-between items-center gap-4">
+                <div class="flex items-center gap-3">
+                    <img src="logo.png" alt="Sigilance Logo" class="h-7 t-logo">
                 </div>
                 <p class="t-text-mut text-xs uppercase tracking-widest">
                     <span class="lang-en">© 2026 Sigilance. All rights reserved.</span>
                     <span class="lang-pt">© 2026 Sigilance. Todos os direitos reservados.</span>
                 </p>
             </div>
-
-            <!-- Botões de currículo (injetados pelo JS) -->
+        </div>
+        <!-- Linha 2: Currículos + Contato -->
+        <div class="max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row justify-between items-center gap-6">
             <div id="resume-buttons" class="flex flex-wrap gap-4 justify-center"></div>
-
             <div class="flex items-center gap-6">
                 <a href="mailto:solutions@sigilance.com" class="t-footer-link transition-colors flex items-center gap-2">
                     <i class="fas fa-envelope"></i>
@@ -670,7 +686,7 @@
         document.addEventListener('DOMContentLoaded', () => {
 
             /* ─────────────────────────────────
-               1. IDIOMA (mesma lógica original)
+               1. IDIOMA
                ───────────────────────────────── */
             var userLang = navigator.language || navigator.userLanguage;
             var isPT = userLang.startsWith('pt');
@@ -693,7 +709,6 @@
             updateThemeIcon(current);
             highlightToastButton(current, saved);
 
-            // Mostra popup apenas na primeira visita (sem preferência salva)
             if (!saved) {
                 setTimeout(function() {
                     document.getElementById('themeToast').classList.add('visible');
@@ -732,7 +747,6 @@
                     : 'fas fa-bars text-sm';
             });
 
-            // Fecha ao clicar em link
             menu.querySelectorAll('a').forEach(function(link) {
                 link.addEventListener('click', function() {
                     menu.classList.remove('active');
@@ -742,7 +756,7 @@
 
 
             /* ─────────────────────────────────
-               5. TOGGLE DE TEMA (botão sol/lua)
+               5. TOGGLE DE TEMA (sol/lua)
                ───────────────────────────────── */
             document.getElementById('themeToggle').addEventListener('click', function() {
                 var cur = document.documentElement.getAttribute('data-theme');
@@ -755,11 +769,15 @@
 
 
         /* ══════════════════════════════════════
-           FUNÇÕES DE TEMA (reutilizáveis)
+           FUNÇÕES DE TEMA
            ══════════════════════════════════════ */
 
         function applyTheme(theme) {
             document.documentElement.setAttribute('data-theme', theme);
+            /* Força reflow imediato para o navegador
+               recalcular todas as variáveis CSS sem
+               precisar de atualizar a página */
+            void document.documentElement.offsetHeight;
         }
 
         function updateThemeIcon(theme) {
@@ -783,7 +801,6 @@
             }
         }
 
-        // Chamado pelos botões do popup
         function setThemeAndClose(choice) {
             if (choice === 'system') {
                 localStorage.setItem('sigilance-theme', 'system');
@@ -798,168 +815,13 @@
             document.getElementById('themeToast').classList.remove('visible');
         }
 
-        // Se o usuário escolheu "Sistema", escuta mudanças do SO em tempo real
+        /* Se o usuário escolheu "Sistema", escuta mudanças do SO */
         window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
             var saved = localStorage.getItem('sigilance-theme');
             if (saved === 'system' || !saved) {
                 var t = e.matches ? 'dark' : 'light';
                 applyTheme(t);
                 updateThemeIcon(t);
-            }
-        });
-    </script>
-</body>
-</html>            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="py-12 border-t border-theme bg-secondary">
-        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
-            <div class="flex flex-col items-center md:items-start">
-                <div class="flex items-center mb-4">
-                    <img src="logo.png" alt="Sigilance Logo" class="h-8 logo-theme">
-                </div>
-                <p class="text-secondary text-xs uppercase tracking-widest">
-                    <span class="lang-en">© 2026 Sigilance. All rights reserved.</span>
-                    <span class="lang-pt">© 2026 Sigilance. Todos os direitos reservados.</span>
-                </p>
-            </div>
-
-            <!-- Dynamic Resume Buttons -->
-            <div id="resume-buttons" class="flex flex-wrap gap-4">
-                <!-- Buttons will be injected by JS -->
-            </div>
-
-            <div class="flex items-center gap-6">
-                <a href="mailto:fred@sigilance.com" class="text-secondary hover:text-highlight-theme transition-colors flex items-center gap-2">
-                    <i class="fas fa-envelope"></i>
-                    <span class="text-sm font-medium uppercase tracking-wider">
-                        <span class="lang-en">Send Email</span>
-                        <span class="lang-pt">Enviar E-mail</span>
-                    </span>
-                </a>
-                <a href="https://www.linkedin.com/in/fredchagas-sapsecurity" target="_blank" class="text-secondary hover:text-highlight-theme transition-colors text-xl">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Theme Switcher Popup -->
-    <div id="theme-switcher-popup">
-        <button class="close-btn" onclick="document.getElementById('theme-switcher-popup').style.display='none';">&times;</button>
-        <p>
-            <span class="lang-en">Choose your preferred theme:</span>
-            <span class="lang-pt">Escolha seu tema preferido:</span>
-        </p>
-        <button id="light-theme-btn">
-            <span class="lang-en">Light</span>
-            <span class="lang-pt">Claro</span>
-        </button>
-        <button id="dark-theme-btn">
-            <span class="lang-en">Dark</span>
-            <span class="lang-pt">Escuro</span>
-        </button>
-        <button id="system-theme-btn">
-            <span class="lang-en">System</span>
-            <span class="lang-pt">Sistema</span>
-        </button>
-    </div>
-
-    <script>
-        // Language Switch Logic
-        document.addEventListener('DOMContentLoaded', () => {
-            const userLang = navigator.language || navigator.userLanguage;
-            const isPortuguese = userLang.startsWith('pt');
-            const ptElements = document.querySelectorAll('.lang-pt');
-            const enElements = document.querySelectorAll('.lang-en');
-            
-            if (isPortuguese) {
-                ptElements.forEach(el => el.style.display = 'block');
-                enElements.forEach(el => el.style.display = 'none');
-                document.documentElement.lang = 'pt-BR';
-            } else {
-                ptElements.forEach(el => el.style.display = 'none');
-                enElements.forEach(el => el.style.display = 'block');
-                document.documentElement.lang = 'en';
-            }
-
-            // Dynamic Resume Buttons Logic
-            const resumeContainer = document.getElementById('resume-buttons');
-            if (isPortuguese) {
-                resumeContainer.innerHTML = `
-                    <a href="curriculo-pt.pdf" download class="px-4 py-2 border border-theme text-primary text-xs font-bold uppercase tracking-widest hover:bg-secondary transition-all flex items-center gap-2">
-                        <i class="fas fa-download"></i> Download Currículo (PT-BR)
-                    </a>
-                    <a href="resume-en.pdf" download class="px-4 py-2 border border-theme text-primary text-xs font-bold uppercase tracking-widest hover:bg-secondary transition-all flex items-center gap-2">
-                        <i class="fas fa-download"></i> Download Resume (EN-USA)
-                    </a>
-                `;
-            } else {
-                resumeContainer.innerHTML = `
-                    <a href="resume-en.pdf" download class="px-4 py-2 border border-theme text-primary text-xs font-bold uppercase tracking-widest hover:bg-secondary transition-all flex items-center gap-2">
-                        <i class="fas fa-download"></i> Download Resume (EN)
-                    </a>
-                `;
-            }
-        });
-
-        // Theme Switcher Logic
-        const themeSwitcherPopup = document.getElementById('theme-switcher-popup');
-        const lightThemeBtn = document.getElementById('light-theme-btn');
-        const darkThemeBtn = document.getElementById('dark-theme-btn');
-        const systemThemeBtn = document.getElementById('system-theme-btn');
-
-        function applyTheme(theme) {
-            document.body.classList.remove('light-theme', 'dark-theme');
-            const watermarkImg = document.getElementById('page-watermark');
-            
-            let activeTheme = theme;
-            if (theme === 'system') {
-                activeTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-            }
-
-            if (activeTheme === 'dark') {
-                document.body.classList.add('dark-theme');
-                if (watermarkImg) watermarkImg.src = 'watermark.png';
-            } else {
-                document.body.classList.add('light-theme');
-                if (watermarkImg) watermarkImg.src = 'watermark-light.png';
-            }
-            
-            localStorage.setItem('theme', theme);
-        }
-
-        // Initial theme application
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme) {
-            applyTheme(savedTheme);
-        } else {
-            // Show popup if no theme is saved
-            themeSwitcherPopup.style.display = 'flex';
-            // Default to light theme if no preference is set and popup is shown
-            applyTheme('light'); 
-        }
-
-        // Event Listeners for theme buttons
-        lightThemeBtn.addEventListener('click', () => {
-            applyTheme('light');
-            themeSwitcherPopup.style.display = 'none';
-        });
-        darkThemeBtn.addEventListener('click', () => {
-            applyTheme('dark');
-            themeSwitcherPopup.style.display = 'none';
-        });
-        systemThemeBtn.addEventListener('click', () => {
-            applyTheme('system');
-            themeSwitcherPopup.style.display = 'none';
-        });
-
-        // Listen for system theme changes
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-            if (localStorage.getItem('theme') === 'system') {
-                applyTheme('system');
             }
         });
     </script>
