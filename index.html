@@ -26,100 +26,36 @@
     <style>
         /* ═══════════════════════════════════════════════════════════════════════
            🎛️  PAINEL DE CONTROLE — EDITE TODAS AS CORES AQUI
-
-           Cada seção abaixo controla uma parte visual do site.
-           Altere os valores e salve o arquivo para ver o resultado.
-           Cores em HEX (#000000) ou RGBA (rgba(0,0,0,0.5)).
-           Opacidade: 0 = invisível → 1 = totalmente visível.
            ═══════════════════════════════════════════════════════════════════════ */
 
-
-        /* ┌──────────────────────────────────────────────────────────────┐
-           │  1. TEMA CLARO (Padrão — estilo IBM / SAP)                 │
-           │  Estas cores aparecem quando o tema está em "claro".        │
-           └──────────────────────────────────────────────────────────────┘ */
         [data-theme="light"] {
-
-            /* Fundo principal (o "papel de parede" do site inteiro) */
             --bg-primary: #ffffff;
-
-            /* Fundo secundário (seções alternadas, como a do Project ARIA) */
             --bg-secondary: #f4f5f7;
-
-            /* Fundo dos cards/caixas */
             --bg-card: #ffffff;
-
-            /* Fundo do cabeçalho (use rgba para deixar translúcido) */
             --bg-header: rgba(255, 255, 255, 0.88);
-
-            /* Cor do texto principal (títulos, descrições fortes) */
             --text-primary: #16181d;
-
-            /* Cor do texto secundário (descrições longas, parágrafos) */
             --text-secondary: #565e6c;
-
-            /* Cor do texto fraco (copyright, legendas pequenas) */
             --text-muted: #6b7280;
-
-            /* COR DOURADA (usada no lema "The Only Path")
-               Dicas de tons: 
-                 #8b7230 → dourado escuro/sóbrio (atual)
-                 #9a7b2e → dourado médio
-                 #b8860b → dourado mais vibrante (DarkGoldenrod)
-                 #6b5a20 → dourado muito discreto/quase invisível
-                 #a08030 → dourado quente */
             --gold: #8b7230;
-
-            /* Cor das bordas (linhas divisoras, contornos de cards) */
             --border-color: #dfe1e6;
-
-            /* COR DE DESTAQUE (links, ícones, acentos, hover) */
             --accent: #0f62fe;
-
-            /* Cor de destaque ao passar o mouse por cima */
             --accent-hover: #0043ce;
-
-            /* Fundo do badge/tag (ex: "Status: In Development") */
             --accent-bg: rgba(15, 98, 254, 0.08);
-
-            /* Borda do badge/tag */
             --accent-border: rgba(15, 98, 254, 0.25);
-
-            /* Brilho sutil no fundo do Hero (cor + opacidade) */
             --hero-glow: rgba(15, 98, 254, 0.05);
-
-            /* Fundo do rodapé */
             --footer-bg: #f4f5f7;
-
-            /* Botão principal — cor de fundo */
             --btn-primary-bg: #0f62fe;
-            /* Botão principal — cor do texto */
             --btn-primary-text: #ffffff;
-            /* Botão principal — fundo ao passar o mouse */
             --btn-primary-hover: #0043ce;
-
-            /* Botão secundário — cor de fundo */
             --btn-secondary-bg: transparent;
-            /* Botão secundário — cor do texto */
             --btn-secondary-text: #16181d;
-            /* Botão secundário — cor da borda */
             --btn-secondary-border: #dfe1e6;
-            /* Botão secundário — fundo ao passar o mouse */
             --btn-secondary-hover-bg: rgba(0, 0, 0, 0.04);
-
-            /* Sombra dos cards (desfoque + espalhamento + cor) */
             --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
-            /* Sombra dos cards ao passar o mouse */
             --shadow-card-hover: 0 4px 16px rgba(0, 0, 0, 0.1);
         }
 
-
-        /* ┌──────────────────────────────────────────────────────────────┐
-           │  2. TEMA ESCURO (Seu tema original — estilo underground)    │
-           │  Estas cores aparecem quando o tema está em "escuro".       │
-           └──────────────────────────────────────────────────────────────┘ */
         [data-theme="dark"] {
-
             --bg-primary: #0a0a0a;
             --bg-secondary: #121212;
             --bg-card: #1a1a1a;
@@ -127,15 +63,7 @@
             --text-primary: #e5e7eb;
             --text-secondary: #9ca3af;
             --text-muted: #6b7280;
-
-            /* COR DOURADA (tema escuro — precisa ser mais clara para aparecer)
-               Dicas de tons:
-                 #c4a24e → dourado médio/quente (atual)
-                 #d4a843 → dourado mais brilhante
-                 #b8963e → dourado mais discreto
-                 #e0c060 → dourado bem luminoso */
             --gold: #c4a24e;
-
             --border-color: #2d3748;
             --accent: #60a5fa;
             --accent-hover: #93c5fd;
@@ -154,21 +82,6 @@
             --shadow-card-hover: 0 4px 16px rgba(0, 0, 0, 0.4);
         }
 
-
-        /* ┌──────────────────────────────────────────────────────────────┐
-           │  3. WATERMARK (Marca d'água central)                       │
-           │                                                             │
-           │  OPACIDADE: 0=invisível | 0.03=muito sutil | 0.07=visível  │
-           │              0.12=bem visível | 0.20=muito forte            │
-           │                                                             │
-           │  FILTRO DA WATERMARK:                                       │
-           │    Sua watermark.png é ESCURA (preto/cinza escuro)?         │
-           │      → Tema CLARO: aparece naturalmente. Deixe "none".      │
-           │      → Tema ESCURO: mude para "invert(1)".                  │
-           │    Sua watermark.png é CLARA (branco/cinza claro)?          │
-           │      → Tema CLARO: mude para "invert(1)".                   │
-           │      → Tema ESCURO: aparece naturalmente. Deixe "none".     │
-           └──────────────────────────────────────────────────────────────┘ */
         [data-theme="light"] {
             --watermark-opacity: 0.20;
             --watermark-filter: none;
@@ -178,345 +91,74 @@
             --watermark-filter: none;
         }
 
+        [data-theme="light"] { --logo-filter: invert(1); }
+        [data-theme="dark"]  { --logo-filter: none; }
 
-        /* ┌──────────────────────────────────────────────────────────────┐
-           │  4. LOGO (Controle de cor da logo.png)                     │
-           │                                                             │
-           │  Sua logo tem letras/fundo CLARO e some no tema claro?      │
-           │    → Tema CLARO: mude para "invert(1)" (branco vira preto)  │
-           │    → Tema ESCURO: deixe "none" (branco fica visível)        │
-           │                                                             │
-           │  Opções de filtro:                                          │
-           │    none                    → sem alteração                  │
-           │    invert(1)               → inverte todas as cores          │
-           │    brightness(0)           → tudo fica preto (sem cor)       │
-           │    invert(1) hue-rotate(180deg) → inverte + ajusta matiz    │
-           │                                                             │
-           │  ⚠️ Se a logo tem cores específicas que nenhum filtro       │
-           │    preserva bem, a solução definitiva é ter dois PNGs       │
-           │    (logo-light.png e logo-dark.png) — me avise que eu       │
-           │    ajusto o código para trocar automaticamente.             │
-           └──────────────────────────────────────────────────────────────┘ */
-        [data-theme="light"] {
-            --logo-filter: invert(1);
-        }
-        [data-theme="dark"] {
-            --logo-filter: none;
-        }
+        body { font-family: 'Inter', sans-serif; font-weight: 400; }
 
-
-        /* ┌──────────────────────────────────────────────────────────────┐
-           │  5. FONTE (Tipografia)                                      │
-           │  Para trocar a fonte, mude o link do Google Fonts           │
-           │  lá em cima no <head> e altere o nome abaixo.               │
-           │  Pesos: 300=fininha | 400=normal | 600=semi | 700=bold     │
-           └──────────────────────────────────────────────────────────────┘ */
-        body {
-            font-family: 'Inter', sans-serif;
-            font-weight: 400;
-        }
-
-
-        /* ┌──────────────────────────────────────────────────────────────┐
-           │  6. BLOCO DE CÓDIGO (Terminal / Mock de código)             │
-           │  Este bloco mantém aparência escura em AMBOS os temas.      │
-           │  Edite as cores abaixo se quiser personalizar.              │
-           └──────────────────────────────────────────────────────────────┘ */
-        [data-theme="light"],
-        [data-theme="dark"] {
-            --code-bg: #0d1117;
-            --code-text: #8b949e;
-            --code-line: #c9d1d9;
-            --code-success: #3fb950;
+        [data-theme="light"], [data-theme="dark"] {
+            --code-bg: #0d1117; --code-text: #8b949e; --code-line: #c9d1d9; --code-success: #3fb950;
         }
 
 
         /* ═══════════════════════════════════════════════════════════════════════
            ⚙️  ABAIXO: ESTILOS DO SITE — NÃO PRECISA EDITAR
-           (a menos que queira mudar a estrutura, layout ou animações)
            ═══════════════════════════════════════════════════════════════════════ */
 
         html { scroll-behavior: smooth; }
-
-        body {
-            background-color: var(--bg-primary);
-            color: var(--text-primary);
-            position: relative;
-            transition: background-color 0.35s ease, color 0.35s ease;
-        }
-
-        .lang-pt { display: none; }
-        .lang-en { display: block; }
-
-        header, section, footer, .t-card, .t-btn-primary, .t-btn-secondary,
-        .t-badge, .t-header, .t-logo, .t-gold {
-            transition: background-color 0.35s ease, color 0.35s ease,
-                        border-color 0.35s ease, box-shadow 0.35s ease,
-                        filter 0.35s ease;
-        }
-
-        .t-text       { color: var(--text-primary); }
-        .t-text-sec   { color: var(--text-secondary); }
-        .t-text-mut   { color: var(--text-muted); }
-        .t-accent     { color: var(--accent); }
-        .t-gold       { color: var(--gold); }
-
-        /* ── Watermark ── */
-        .watermark {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 80%;
-            max-width: 800px;
-            opacity: var(--watermark-opacity);
-            filter: var(--watermark-filter);
-            pointer-events: none;
-            z-index: 0;
-            transition: opacity 0.35s ease, filter 0.35s ease;
-        }
-
-        /* ── Logo ── */
-        .t-logo {
-            filter: var(--logo-filter);
-        }
-
-        /* ── Header ── */
-        .t-header {
-            background-color: var(--bg-header);
-            border-color: var(--border-color);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-        }
-        .t-header-link { color: var(--text-secondary); }
-        .t-header-link:hover { color: var(--accent); }
-
-        /* ── Hero glow ── */
-        .hero-glow {
-            background: radial-gradient(ellipse at 30% 40%, var(--hero-glow) 0%, transparent 70%);
-        }
-
-        /* ── Cards ── */
-        .t-card {
-            background-color: var(--bg-card);
-            border-color: var(--border-color);
-            box-shadow: var(--shadow-card);
-        }
-        .t-card:hover {
-            border-color: var(--accent);
-            box-shadow: var(--shadow-card-hover);
-        }
-
-        /* ── Botões ── */
-        .t-btn-primary {
-            background-color: var(--btn-primary-bg);
-            color: var(--btn-primary-text);
-        }
-        .t-btn-primary:hover { background-color: var(--btn-primary-hover); }
-        .t-btn-secondary {
-            background-color: var(--btn-secondary-bg);
-            color: var(--btn-secondary-text);
-            border-color: var(--btn-secondary-border);
-        }
-        .t-btn-secondary:hover { background-color: var(--btn-secondary-hover-bg); }
-
-        /* ── Badge ── */
-        .t-badge {
-            background-color: var(--accent-bg);
-            border-color: var(--accent-border);
-            color: var(--accent);
-        }
-
-        /* ── Seção alternada ── */
-        .t-section-alt {
-            background-color: var(--bg-secondary);
-            border-color: var(--border-color);
-        }
-
-        /* ── Footer ── */
-        .t-footer {
-            background-color: var(--footer-bg);
-            border-color: var(--border-color);
-        }
-        .t-footer-link { color: var(--text-secondary); }
-        .t-footer-link:hover { color: var(--accent); }
-
-        /* ── Código (terminal, sempre escuro) ── */
-        .code-block { background-color: var(--code-bg); color: var(--code-text); }
-        .code-line  { color: var(--code-line); }
-        .code-ok    { color: var(--code-success); }
-
-        /* ── Botão de trocar tema (sol/lua) ── */
-        .theme-toggle {
-            color: var(--text-secondary);
-            background: none;
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            width: 36px;
-            height: 36px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            flex-shrink: 0;
-        }
-        .theme-toggle:hover {
-            color: var(--accent);
-            border-color: var(--accent);
-        }
-
-        /* ── Menu mobile ── */
-        .mobile-menu {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            background-color: var(--bg-header);
-            border-bottom: 1px solid var(--border-color);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-        }
-        .mobile-menu.active { display: flex; }
-
-        /* ── Toast / Popup de escolha de tema ── */
-        .theme-toast {
-            position: fixed;
-            bottom: 24px;
-            right: 24px;
-            z-index: 200;
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
-            padding: 20px;
-            max-width: 320px;
-            transform: translateY(20px);
-            opacity: 0;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            pointer-events: none;
-        }
-        .theme-toast.visible {
-            transform: translateY(0);
-            opacity: 1;
-            pointer-events: all;
-        }
-        .theme-toast-bar {
-            position: absolute;
-            bottom: 0;
-            left: 12px;
-            right: 12px;
-            height: 3px;
-            background-color: var(--border-color);
-            border-radius: 3px;
-            overflow: hidden;
-        }
-        .theme-toast-bar-fill {
-            height: 100%;
-            background-color: var(--accent);
-            border-radius: 3px;
-            animation: toastCountdown 10s linear forwards;
-        }
-        @keyframes toastCountdown {
-            from { width: 100%; }
-            to   { width: 0%; }
-        }
-        .toast-btn {
-            padding: 6px 14px;
-            border-radius: 6px;
-            font-size: 13px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.15s ease;
-            border: 1px solid var(--border-color);
-            background-color: transparent;
-            color: var(--text-secondary);
-        }
-        .toast-btn:hover {
-            border-color: var(--accent);
-            color: var(--accent);
-            background-color: var(--accent-bg);
-        }
-        .toast-btn.active {
-            background-color: var(--accent);
-            color: #fff;
-            border-color: var(--accent);
-        }
-        [data-theme="dark"] .toast-btn.active { color: #000; }
-
-        /* ── Animações ── */
-        .fade-in {
-            opacity: 0;
-            animation: fadeIn 0.6s ease-out forwards;
-        }
-        .fade-d1 { animation-delay: 0.15s; }
-        .fade-d2 { animation-delay: 0.3s; }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(14px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
-
-        section { position: relative; z-index: 10; }
-        header, footer { position: relative; z-index: 50; }
-
-        @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after {
-                animation-duration: 0.01ms !important;
-                transition-duration: 0.01ms !important;
-            }
-        }
+        body { background-color: var(--bg-primary); color: var(--text-primary); position: relative; transition: background-color 0.35s ease, color 0.35s ease; }
+        .lang-pt { display: none; } .lang-en { display: block; }
+        header, section, footer, .t-card, .t-btn-primary, .t-btn-secondary, .t-badge, .t-header, .t-logo, .t-gold { transition: background-color 0.35s ease, color 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, filter 0.35s ease; }
+        .t-text { color: var(--text-primary); } .t-text-sec { color: var(--text-secondary); } .t-text-mut { color: var(--text-muted); } .t-accent { color: var(--accent); } .t-gold { color: var(--gold); }
+        .watermark { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80%; max-width: 800px; opacity: var(--watermark-opacity); filter: var(--watermark-filter); pointer-events: none; z-index: 0; transition: opacity 0.35s ease, filter 0.35s ease; }
+        .t-logo { filter: var(--logo-filter); }
+        .t-header { background-color: var(--bg-header); border-color: var(--border-color); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+        .t-header-link { color: var(--text-secondary); } .t-header-link:hover { color: var(--accent); }
+        .hero-glow { background: radial-gradient(ellipse at 30% 40%, var(--hero-glow) 0%, transparent 70%); }
+        .t-card { background-color: var(--bg-card); border-color: var(--border-color); box-shadow: var(--shadow-card); } .t-card:hover { border-color: var(--accent); box-shadow: var(--shadow-card-hover); }
+        .t-btn-primary { background-color: var(--btn-primary-bg); color: var(--btn-primary-text); } .t-btn-primary:hover { background-color: var(--btn-primary-hover); }
+        .t-btn-secondary { background-color: var(--btn-secondary-bg); color: var(--btn-secondary-text); border-color: var(--btn-secondary-border); } .t-btn-secondary:hover { background-color: var(--btn-secondary-hover-bg); }
+        .t-badge { background-color: var(--accent-bg); border-color: var(--accent-border); color: var(--accent); }
+        .t-section-alt { background-color: var(--bg-secondary); border-color: var(--border-color); }
+        .t-footer { background-color: var(--footer-bg); border-color: var(--border-color); }
+        .t-footer-link { color: var(--text-secondary); } .t-footer-link:hover { color: var(--accent); }
+        .code-block { background-color: var(--code-bg); color: var(--code-text); } .code-line { color: var(--code-line); } .code-ok { color: var(--code-success); }
+        .theme-toggle { color: var(--text-secondary); background: none; border: 1px solid var(--border-color); border-radius: 6px; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s ease; flex-shrink: 0; } .theme-toggle:hover { color: var(--accent); border-color: var(--accent); }
+        .mobile-menu { display: none; position: absolute; top: 100%; left: 0; right: 0; background-color: var(--bg-header); border-bottom: 1px solid var(--border-color); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); } .mobile-menu.active { display: flex; }
+        .theme-toast { position: fixed; bottom: 24px; right: 24px; z-index: 200; background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12); padding: 20px; max-width: 320px; transform: translateY(20px); opacity: 0; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); pointer-events: none; } .theme-toast.visible { transform: translateY(0); opacity: 1; pointer-events: all; }
+        .theme-toast-bar { position: absolute; bottom: 0; left: 12px; right: 12px; height: 3px; background-color: var(--border-color); border-radius: 3px; overflow: hidden; } .theme-toast-bar-fill { height: 100%; background-color: var(--accent); border-radius: 3px; animation: toastCountdown 10s linear forwards; }
+        @keyframes toastCountdown { from { width: 100%; } to { width: 0%; } }
+        .toast-btn { padding: 6px 14px; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.15s ease; border: 1px solid var(--border-color); background-color: transparent; color: var(--text-secondary); } .toast-btn:hover { border-color: var(--accent); color: var(--accent); background-color: var(--accent-bg); } .toast-btn.active { background-color: var(--accent); color: #fff; border-color: var(--accent); } [data-theme="dark"] .toast-btn.active { color: #000; }
+        .fade-in { opacity: 0; animation: fadeIn 0.6s ease-out forwards; } .fade-d1 { animation-delay: 0.15s; } .fade-d2 { animation-delay: 0.3s; } @keyframes fadeIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+        section { position: relative; z-index: 10; } header, footer { position: relative; z-index: 50; }
+        @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } }
     </style>
 </head>
 <body class="antialiased">
 
-    <!-- Watermark -->
     <img src="watermark.png" alt="" class="watermark" aria-hidden="true">
 
-    <!-- ════════════ HEADER ════════════ -->
     <header class="fixed w-full z-50 t-header border-b">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex items-center gap-3">
-                <a href="#" class="hover:opacity-80 transition-opacity">
-                    <img src="logo.png" alt="Sigilance Logo" class="h-8 md:h-10 t-logo">
-                </a>
-                <span class="hidden sm:inline text-[10px] uppercase tracking-[0.25em] t-gold font-light">
-                    The Only Path
-                </span>
+                <a href="#" class="hover:opacity-80 transition-opacity"><img src="logo.png" alt="Sigilance Logo" class="h-8 md:h-10 t-logo"></a>
+                <span class="hidden sm:inline text-[10px] uppercase tracking-[0.25em] t-gold font-light">The Only Path</span>
             </div>
             <div class="flex items-center gap-3">
                 <nav class="hidden md:flex items-center space-x-8 text-sm font-medium tracking-widest uppercase">
-                    <a href="#aria" class="t-header-link transition-colors">
-                        <span class="lang-en">Project ARIA</span>
-                        <span class="lang-pt">Projeto ARIA</span>
-                    </a>
-                    <a href="#architect" class="t-header-link transition-colors">
-                        <span class="lang-en">The Architect</span>
-                        <span class="lang-pt">O Arquiteto</span>
-                    </a>
+                    <a href="#aria" class="t-header-link transition-colors"><span class="lang-en">Project ARIA</span><span class="lang-pt">Projeto ARIA</span></a>
+                    <a href="#architect" class="t-header-link transition-colors"><span class="lang-en">The Architect</span><span class="lang-pt">O Arquiteto</span></a>
                 </nav>
-                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-                    <i class="fas fa-moon text-sm" id="themeIcon"></i>
-                </button>
-                <button class="theme-toggle md:hidden" id="mobileMenuBtn" aria-label="Menu">
-                    <i class="fas fa-bars text-sm" id="mobileMenuIcon"></i>
-                </button>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme"><i class="fas fa-moon text-sm" id="themeIcon"></i></button>
+                <button class="theme-toggle md:hidden" id="mobileMenuBtn" aria-label="Menu"><i class="fas fa-bars text-sm" id="mobileMenuIcon"></i></button>
             </div>
         </div>
         <div class="mobile-menu md:hidden flex-col px-6 py-4 space-y-4" id="mobileMenu">
-            <a href="#aria" class="t-header-link text-sm font-medium tracking-widest uppercase transition-colors">
-                <span class="lang-en">Project ARIA</span>
-                <span class="lang-pt">Projeto ARIA</span>
-            </a>
-            <a href="#architect" class="t-header-link text-sm font-medium tracking-widest uppercase transition-colors">
-                <span class="lang-en">The Architect</span>
-                <span class="lang-pt">O Arquiteto</span>
-            </a>
+            <a href="#aria" class="t-header-link text-sm font-medium tracking-widest uppercase transition-colors"><span class="lang-en">Project ARIA</span><span class="lang-pt">Projeto ARIA</span></a>
+            <a href="#architect" class="t-header-link text-sm font-medium tracking-widest uppercase transition-colors"><span class="lang-en">The Architect</span><span class="lang-pt">O Arquiteto</span></a>
         </div>
     </header>
 
-
-    <!-- ════════════ HERO ════════════ -->
     <section class="relative min-h-screen flex items-center pt-20 overflow-hidden">
         <div class="hero-glow absolute inset-0 z-0"></div>
         <div class="max-w-7xl mx-auto px-6 relative z-10">
@@ -530,33 +172,19 @@
                     <span class="lang-pt">Combinando +10 anos de expertise em SAP com a próxima geração de automação inteligente em Python.</span>
                 </p>
                 <div class="flex flex-wrap gap-4 fade-in fade-d2">
-                    <a href="#aria" class="t-btn-primary px-8 py-4 font-bold rounded transition-all uppercase tracking-wider text-sm">
-                        <span class="lang-en">Explore Project ARIA</span>
-                        <span class="lang-pt">Explorar Projeto ARIA</span>
-                    </a>
-                    <a href="https://www.linkedin.com/in/fredchagas-sapsecurity" target="_blank" class="t-btn-secondary px-8 py-4 font-bold rounded transition-all uppercase tracking-wider text-sm">
-                        <span class="lang-en">Connect on LinkedIn</span>
-                        <span class="lang-pt">Conectar no LinkedIn</span>
-                    </a>
+                    <a href="#aria" class="t-btn-primary px-8 py-4 font-bold rounded transition-all uppercase tracking-wider text-sm"><span class="lang-en">Explore Project ARIA</span><span class="lang-pt">Explorar Projeto ARIA</span></a>
+                    <a href="https://www.linkedin.com/in/fredchagas-sapsecurity" target="_blank" class="t-btn-secondary px-8 py-4 font-bold rounded transition-all uppercase tracking-wider text-sm"><span class="lang-en">Connect on LinkedIn</span><span class="lang-pt">Conectar no LinkedIn</span></a>
                 </div>
             </div>
         </div>
     </section>
 
-
-    <!-- ════════════ PROJECT ARIA ════════════ -->
     <section id="aria" class="py-24 t-section-alt border-y">
         <div class="max-w-7xl mx-auto px-6">
             <div class="flex flex-col md:flex-row items-center gap-12">
                 <div class="w-full md:w-1/2">
-                    <div class="t-badge inline-block px-3 py-1 mb-6 text-xs font-bold uppercase tracking-widest rounded">
-                        <span class="lang-en">Status: In Development</span>
-                        <span class="lang-pt">Status: Em Desenvolvimento</span>
-                    </div>
-                    <h2 class="text-4xl font-bold mb-6 t-text">
-                        <span class="lang-en">Project ARIA</span>
-                        <span class="lang-pt">Projeto ARIA</span>
-                    </h2>
+                    <div class="t-badge inline-block px-3 py-1 mb-6 text-xs font-bold uppercase tracking-widest rounded"><span class="lang-en">Status: In Development</span><span class="lang-pt">Status: Em Desenvolvimento</span></div>
+                    <h2 class="text-4xl font-bold mb-6 t-text"><span class="lang-en">Project ARIA</span><span class="lang-pt">Projeto ARIA</span></h2>
                     <div class="space-y-4 text-lg leading-relaxed t-text-sec">
                         <p class="lang-en">Moving beyond limitations, Project ARIA represents the pinnacle of SAP Security automation. Designed for high-speed S/4HANA migrations, it leverages Python to handle complex data structures with surgical precision.</p>
                         <p class="lang-pt">Superando limitações, o Projeto ARIA representa o ápice da automação de Segurança SAP. Projetado para migrações S/4HANA de alta velocidade, ele utiliza Python para manipular estruturas de dados complexas com precisão cirúrgica.</p>
@@ -582,15 +210,10 @@
         </div>
     </section>
 
-
-    <!-- ════════════ THE ARCHITECT ════════════ -->
     <section id="architect" class="py-24">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold mb-4 t-text">
-                    <span class="lang-en">The Architect</span>
-                    <span class="lang-pt">O Arquiteto</span>
-                </h2>
+                <h2 class="text-4xl font-bold mb-4 t-text"><span class="lang-en">The Architect</span><span class="lang-pt">O Arquiteto</span></h2>
                 <p class="max-w-2xl mx-auto italic t-text-sec">
                     <span class="lang-en">"Sigilance" — The fusion of "Sigil" (Seal of Authority) and "Vigilance".</span>
                     <span class="lang-pt">"Sigilance" — A fusão de "Sigil" (Selo de Autoridade) e "Vigilance" (Vigilância).</span>
@@ -598,57 +221,31 @@
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="t-card p-8 rounded-lg transition-all group">
-                    <div class="t-accent mb-6 text-3xl group-hover:scale-110 transition-transform">
-                        <i class="fas fa-shield-halved"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-4 t-text">
-                        <span class="lang-en">10+ Years Experience</span>
-                        <span class="lang-pt">10+ Anos de Experiência</span>
-                    </h3>
-                    <p class="text-sm leading-relaxed t-text-sec">
-                        <span class="lang-en">A deep-rooted history in SAP Security, navigating through complex global environments and evolving threats.</span>
-                        <span class="lang-pt">Uma história profunda em Segurança SAP, navegando por ambientes globais complexos e ameaças em constante evolução.</span>
-                    </p>
+                    <div class="t-accent mb-6 text-3xl group-hover:scale-110 transition-transform"><i class="fas fa-shield-halved"></i></div>
+                    <h3 class="text-xl font-bold mb-4 t-text"><span class="lang-en">10+ Years Experience</span><span class="lang-pt">10+ Anos de Experiência</span></h3>
+                    <p class="text-sm leading-relaxed t-text-sec"><span class="lang-en">A deep-rooted history in SAP Security, navigating through complex global environments and evolving threats.</span><span class="lang-pt">Uma história profunda em Segurança SAP, navegando por ambientes globais complexos e ameaças em constante evolução.</span></p>
                 </div>
                 <div class="t-card p-8 rounded-lg transition-all group">
-                    <div class="t-accent mb-6 text-3xl group-hover:scale-110 transition-transform">
-                        <i class="fas fa-microchip"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-4 t-text">
-                        <span class="lang-en">S/4HANA Specialized</span>
-                        <span class="lang-pt">Especialista em S/4HANA</span>
-                    </h3>
-                    <p class="text-sm leading-relaxed t-text-sec">
-                        <span class="lang-en">Expertise in the latest SAP technology stack, ensuring secure and efficient transitions to S/4HANA.</span>
-                        <span class="lang-pt">Expertise na última pilha de tecnologia SAP, garantindo transições seguras e eficientes para o S/4HANA.</span>
-                    </p>
+                    <div class="t-accent mb-6 text-3xl group-hover:scale-110 transition-transform"><i class="fas fa-microchip"></i></div>
+                    <h3 class="text-xl font-bold mb-4 t-text"><span class="lang-en">S/4HANA Specialized</span><span class="lang-pt">Especialista em S/4HANA</span></h3>
+                    <p class="text-sm leading-relaxed t-text-sec"><span class="lang-en">Expertise in the latest SAP technology stack, ensuring secure and efficient transitions to S/4HANA.</span><span class="lang-pt">Expertise na última pilha de tecnologia SAP, garantindo transições seguras e eficientes para o S/4HANA.</span></p>
                 </div>
                 <div class="t-card p-8 rounded-lg transition-all group">
-                    <div class="t-accent mb-6 text-3xl group-hover:scale-110 transition-transform">
-                        <i class="fas fa-user-lock"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-4 t-text">
-                        <span class="lang-en">GRC & Access Control</span>
-                        <span class="lang-pt">GRC & Controle de Acesso</span>
-                    </h3>
-                    <p class="text-sm leading-relaxed t-text-sec">
-                        <span class="lang-en">Mastery of Governance, Risk, and Compliance, implementing robust access control frameworks.</span>
-                        <span class="lang-pt">Domínio de Governança, Risco e Compliance, implementando estruturas robustas de controle de acesso.</span>
-                    </p>
+                    <div class="t-accent mb-6 text-3xl group-hover:scale-110 transition-transform"><i class="fas fa-user-lock"></i></div>
+                    <h3 class="text-xl font-bold mb-4 t-text"><span class="lang-en">GRC & Access Control</span><span class="lang-pt">GRC & Controle de Acesso</span></h3>
+                    <p class="text-sm leading-relaxed t-text-sec"><span class="lang-en">Mastery of Governance, Risk, and Compliance, implementing robust access control frameworks.</span><span class="lang-pt">Domínio de Governança, Risco e Compliance, implementando estruturas robustas de controle de acesso.</span></p>
                 </div>
             </div>
         </div>
     </section>
 
-
-    <!-- ════════════ FOOTER ════════════ -->
     <footer class="t-footer">
-        <!-- Linha 1: Logo + Lema + Copyright -->
         <div class="border-b" style="border-color: var(--border-color)">
             <div class="max-w-7xl mx-auto px-6 py-6 flex flex-col items-center md:flex-row justify-between gap-2 md:gap-4">
                 <div class="flex flex-col items-center md:items-start gap-1">
                     <img src="logo.png" alt="Sigilance Logo" class="h-7 t-logo">
-                    <span class="t-gold text-[10px] uppercase tracking-[0.25em] font-light">The Only Path</span>
+                    <!-- md:hidden aqui: aparece no celular, some no desktop -->
+                    <span class="md:hidden t-gold text-[10px] uppercase tracking-[0.25em] font-light">The Only Path</span>
                 </div>
                 <p class="t-text-mut text-xs uppercase tracking-widest">
                     <span class="lang-en">© 2026 Sigilance. All rights reserved.</span>
@@ -656,193 +253,61 @@
                 </p>
             </div>
         </div>
-        <!-- Linha 2: Currículos + Contato -->
         <div class="max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row justify-between items-center gap-6">
             <div id="resume-buttons" class="flex flex-wrap gap-4 justify-center"></div>
             <div class="flex items-center gap-5">
                 <a href="mailto:solutions@sigilance.com" class="t-footer-link transition-colors flex items-center gap-2">
                     <i class="fas fa-envelope"></i>
-                    <span class="text-sm font-medium uppercase tracking-wider">
-                        <span class="lang-en">Send Email</span>
-                        <span class="lang-pt">Enviar E-mail</span>
-                    </span>
+                    <span class="text-sm font-medium uppercase tracking-wider"><span class="lang-en">Send Email</span><span class="lang-pt">Enviar E-mail</span></span>
                 </a>
-                <a href="https://wa.me/5541991551107" target="_blank" class="t-footer-link transition-colors text-lg" aria-label="WhatsApp">
-                    <i class="fab fa-whatsapp"></i>
-                </a>
-                <a href="https://www.linkedin.com/in/fredchagas-sapsecurity" target="_blank" class="t-footer-link transition-colors text-lg">
-                    <i class="fab fa-linkedin"></i>
-                </a>
+                <a href="https://wa.me/5541991551107" target="_blank" class="t-footer-link transition-colors text-lg" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://www.linkedin.com/in/fredchagas-sapsecurity" target="_blank" class="t-footer-link transition-colors text-lg"><i class="fab fa-linkedin"></i></a>
             </div>
         </div>
     </footer>
 
-
-    <!-- ════════════ POPUP DE ESCOLHA DE TEMA ════════════ -->
     <div class="theme-toast" id="themeToast">
-        <p class="text-sm font-semibold mb-3 t-text">
-            <span class="lang-en">Choose your preferred appearance</span>
-            <span class="lang-pt">Escolha sua aparência preferida</span>
-        </p>
+        <p class="text-sm font-semibold mb-3 t-text"><span class="lang-en">Choose your preferred appearance</span><span class="lang-pt">Escolha sua aparência preferida</span></p>
         <div class="flex gap-2 mb-4">
-            <button class="toast-btn" id="toastLight" onclick="setThemeAndClose('light')">
-                <i class="fas fa-sun mr-1"></i>
-                <span class="lang-en">Light</span><span class="lang-pt">Claro</span>
-            </button>
-            <button class="toast-btn" id="toastDark" onclick="setThemeAndClose('dark')">
-                <i class="fas fa-moon mr-1"></i>
-                <span class="lang-en">Dark</span><span class="lang-pt">Escuro</span>
-            </button>
-            <button class="toast-btn" id="toastSystem" onclick="setThemeAndClose('system')">
-                <i class="fas fa-desktop mr-1"></i>
-                <span class="lang-en">System</span><span class="lang-pt">Sistema</span>
-            </button>
+            <button class="toast-btn" id="toastLight" onclick="setThemeAndClose('light')"><i class="fas fa-sun mr-1"></i><span class="lang-en">Light</span><span class="lang-pt">Claro</span></button>
+            <button class="toast-btn" id="toastDark" onclick="setThemeAndClose('dark')"><i class="fas fa-moon mr-1"></i><span class="lang-en">Dark</span><span class="lang-pt">Escuro</span></button>
+            <button class="toast-btn" id="toastSystem" onclick="setThemeAndClose('system')"><i class="fas fa-desktop mr-1"></i><span class="lang-en">System</span><span class="lang-pt">Sistema</span></button>
         </div>
-        <div class="theme-toast-bar">
-            <div class="theme-toast-bar-fill" id="toastBar"></div>
-        </div>
+        <div class="theme-toast-bar"><div class="theme-toast-bar-fill" id="toastBar"></div></div>
     </div>
 
-
-    <!-- ════════════ JAVASCRIPT ════════════ -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-
-            /* ─────────────────────────────────
-               1. IDIOMA
-               ───────────────────────────────── */
             var userLang = navigator.language || navigator.userLanguage;
             var isPT = userLang.startsWith('pt');
-
-            document.querySelectorAll('.lang-pt').forEach(function(el) {
-                el.style.display = isPT ? 'block' : 'none';
-            });
-            document.querySelectorAll('.lang-en').forEach(function(el) {
-                el.style.display = isPT ? 'none' : 'block';
-            });
+            document.querySelectorAll('.lang-pt').forEach(function(el) { el.style.display = isPT ? 'block' : 'none'; });
+            document.querySelectorAll('.lang-en').forEach(function(el) { el.style.display = isPT ? 'none' : 'block'; });
             document.documentElement.lang = isPT ? 'pt-BR' : 'en';
 
-
-            /* ─────────────────────────────────
-               2. TEMA — inicialização
-               ───────────────────────────────── */
             var saved = localStorage.getItem('sigilance-theme');
             var current = document.documentElement.getAttribute('data-theme');
+            updateThemeIcon(current); highlightToastButton(current, saved);
+            if (!saved) { setTimeout(function() { document.getElementById('themeToast').classList.add('visible'); }, 2000); }
 
-            updateThemeIcon(current);
-            highlightToastButton(current, saved);
-
-            if (!saved) {
-                setTimeout(function() {
-                    document.getElementById('themeToast').classList.add('visible');
-                }, 2000);
-            }
-
-
-            /* ─────────────────────────────────
-               3. BOTÕES DE CURRÍCULO
-               ───────────────────────────────── */
             var box = document.getElementById('resume-buttons');
             if (isPT) {
-                box.innerHTML =
-                    '<a href="curriculo-pt.pdf" download class="t-btn-secondary px-4 py-2 text-xs font-bold uppercase tracking-widest transition-all flex items-center gap-2 rounded">' +
-                    '<i class="fas fa-download"></i> Download Currículo (PT-BR)</a>' +
-                    '<a href="resume-en.pdf" download class="t-btn-secondary px-4 py-2 text-xs font-bold uppercase tracking-widest transition-all flex items-center gap-2 rounded">' +
-                    '<i class="fas fa-download"></i> Download Resume (EN-USA)</a>';
+                box.innerHTML = '<a href="curriculo-pt.pdf" download class="t-btn-secondary px-4 py-2 text-xs font-bold uppercase tracking-widest transition-all flex items-center gap-2 rounded"><i class="fas fa-download"></i> Download Currículo (PT-BR)</a><a href="resume-en.pdf" download class="t-btn-secondary px-4 py-2 text-xs font-bold uppercase tracking-widest transition-all flex items-center gap-2 rounded"><i class="fas fa-download"></i> Download Resume (EN-USA)</a>';
             } else {
-                box.innerHTML =
-                    '<a href="resume-en.pdf" download class="t-btn-secondary px-4 py-2 text-xs font-bold uppercase tracking-widest transition-all flex items-center gap-2 rounded">' +
-                    '<i class="fas fa-download"></i> Download Resume (EN)</a>';
+                box.innerHTML = '<a href="resume-en.pdf" download class="t-btn-secondary px-4 py-2 text-xs font-bold uppercase tracking-widest transition-all flex items-center gap-2 rounded"><i class="fas fa-download"></i> Download Resume (EN)</a>';
             }
 
+            var menuBtn = document.getElementById('mobileMenuBtn'); var menu = document.getElementById('mobileMenu'); var menuIcon = document.getElementById('mobileMenuIcon');
+            menuBtn.addEventListener('click', function() { var open = menu.classList.toggle('active'); menuIcon.className = open ? 'fas fa-xmark text-sm' : 'fas fa-bars text-sm'; });
+            menu.querySelectorAll('a').forEach(function(link) { link.addEventListener('click', function() { menu.classList.remove('active'); menuIcon.className = 'fas fa-bars text-sm'; }); });
 
-            /* ─────────────────────────────────
-               4. MENU MOBILE (hamburger)
-               ───────────────────────────────── */
-            var menuBtn  = document.getElementById('mobileMenuBtn');
-            var menu     = document.getElementById('mobileMenu');
-            var menuIcon = document.getElementById('mobileMenuIcon');
-
-            menuBtn.addEventListener('click', function() {
-                var open = menu.classList.toggle('active');
-                menuIcon.className = open
-                    ? 'fas fa-xmark text-sm'
-                    : 'fas fa-bars text-sm';
-            });
-
-            menu.querySelectorAll('a').forEach(function(link) {
-                link.addEventListener('click', function() {
-                    menu.classList.remove('active');
-                    menuIcon.className = 'fas fa-bars text-sm';
-                });
-            });
-
-
-            /* ─────────────────────────────────
-               5. TOGGLE DE TEMA (sol/lua)
-               ───────────────────────────────── */
-            document.getElementById('themeToggle').addEventListener('click', function() {
-                var cur = document.documentElement.getAttribute('data-theme');
-                var nxt = (cur === 'dark') ? 'light' : 'dark';
-                applyTheme(nxt);
-                localStorage.setItem('sigilance-theme', nxt);
-                updateThemeIcon(nxt);
-            });
+            document.getElementById('themeToggle').addEventListener('click', function() { var cur = document.documentElement.getAttribute('data-theme'); var nxt = (cur === 'dark') ? 'light' : 'dark'; applyTheme(nxt); localStorage.setItem('sigilance-theme', nxt); updateThemeIcon(nxt); });
         });
 
-
-        /* ══════════════════════════════════════
-           FUNÇÕES DE TEMA
-           ══════════════════════════════════════ */
-
-        function applyTheme(theme) {
-            document.documentElement.setAttribute('data-theme', theme);
-            void document.documentElement.offsetHeight;
-        }
-
-        function updateThemeIcon(theme) {
-            var icon = document.getElementById('themeIcon');
-            if (icon) {
-                icon.className = (theme === 'dark')
-                    ? 'fas fa-sun text-sm'
-                    : 'fas fa-moon text-sm';
-            }
-        }
-
-        function highlightToastButton(currentTheme, savedTheme) {
-            var lb = document.getElementById('toastLight');
-            var db = document.getElementById('toastDark');
-            if (!lb) return;
-            [lb, db, document.getElementById('toastSystem')].forEach(function(b) {
-                b.classList.remove('active');
-            });
-            if (!savedTheme) {
-                (currentTheme === 'light' ? lb : db).classList.add('active');
-            }
-        }
-
-        function setThemeAndClose(choice) {
-            if (choice === 'system') {
-                localStorage.setItem('sigilance-theme', 'system');
-                var dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                applyTheme(dark ? 'dark' : 'light');
-                updateThemeIcon(dark ? 'dark' : 'light');
-            } else {
-                localStorage.setItem('sigilance-theme', choice);
-                applyTheme(choice);
-                updateThemeIcon(choice);
-            }
-            document.getElementById('themeToast').classList.remove('visible');
-        }
-
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
-            var saved = localStorage.getItem('sigilance-theme');
-            if (saved === 'system' || !saved) {
-                var t = e.matches ? 'dark' : 'light';
-                applyTheme(t);
-                updateThemeIcon(t);
-            }
-        });
+        function applyTheme(theme) { document.documentElement.setAttribute('data-theme', theme); void document.documentElement.offsetHeight; }
+        function updateThemeIcon(theme) { var icon = document.getElementById('themeIcon'); if (icon) { icon.className = (theme === 'dark') ? 'fas fa-sun text-sm' : 'fas fa-moon text-sm'; } }
+        function highlightToastButton(currentTheme, savedTheme) { var lb = document.getElementById('toastLight'); var db = document.getElementById('toastDark'); if (!lb) return; [lb, db, document.getElementById('toastSystem')].forEach(function(b) { b.classList.remove('active'); }); if (!savedTheme) { (currentTheme === 'light' ? lb : db).classList.add('active'); } }
+        function setThemeAndClose(choice) { if (choice === 'system') { localStorage.setItem('sigilance-theme', 'system'); var dark = window.matchMedia('(prefers-color-scheme: dark)').matches; applyTheme(dark ? 'dark' : 'light'); updateThemeIcon(dark ? 'dark' : 'light'); } else { localStorage.setItem('sigilance-theme', choice); applyTheme(choice); updateThemeIcon(choice); } document.getElementById('themeToast').classList.remove('visible'); }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) { var saved = localStorage.getItem('sigilance-theme'); if (saved === 'system' || !saved) { var t = e.matches ? 'dark' : 'light'; applyTheme(t); updateThemeIcon(t); } });
     </script>
 </body>
 </html>
