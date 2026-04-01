@@ -61,6 +61,15 @@
             /* Cor do texto fraco (copyright, legendas pequenas) */
             --text-muted: #6b7280;
 
+            /* COR DOURADA (usada no lema "The Only Path")
+               Dicas de tons: 
+                 #8b7230 → dourado escuro/sóbrio (atual)
+                 #9a7b2e → dourado médio
+                 #b8860b → dourado mais vibrante (DarkGoldenrod)
+                 #6b5a20 → dourado muito discreto/quase invisível
+                 #a08030 → dourado quente */
+            --gold: #8b7230;
+
             /* Cor das bordas (linhas divisoras, contornos de cards) */
             --border-color: #dfe1e6;
 
@@ -118,6 +127,15 @@
             --text-primary: #e5e7eb;
             --text-secondary: #9ca3af;
             --text-muted: #6b7280;
+
+            /* COR DOURADA (tema escuro — precisa ser mais clara para aparecer)
+               Dicas de tons:
+                 #c4a24e → dourado médio/quente (atual)
+                 #d4a843 → dourado mais brilhante
+                 #b8963e → dourado mais discreto
+                 #e0c060 → dourado bem luminoso */
+            --gold: #c4a24e;
+
             --border-color: #2d3748;
             --accent: #60a5fa;
             --accent-hover: #93c5fd;
@@ -152,7 +170,7 @@
            │      → Tema ESCURO: aparece naturalmente. Deixe "none".     │
            └──────────────────────────────────────────────────────────────┘ */
         [data-theme="light"] {
-            --watermark-opacity: 0.20;
+            --watermark-opacity: 0.07;
             --watermark-filter: none;
         }
         [data-theme="dark"] {
@@ -231,7 +249,7 @@
         .lang-en { display: block; }
 
         header, section, footer, .t-card, .t-btn-primary, .t-btn-secondary,
-        .t-badge, .t-header, .t-logo {
+        .t-badge, .t-header, .t-logo, .t-gold {
             transition: background-color 0.35s ease, color 0.35s ease,
                         border-color 0.35s ease, box-shadow 0.35s ease,
                         filter 0.35s ease;
@@ -241,6 +259,7 @@
         .t-text-sec   { color: var(--text-secondary); }
         .t-text-mut   { color: var(--text-muted); }
         .t-accent     { color: var(--accent); }
+        .t-gold       { color: var(--gold); }
 
         /* ── Watermark ── */
         .watermark {
@@ -461,7 +480,7 @@
                 <a href="#" class="hover:opacity-80 transition-opacity">
                     <img src="logo.png" alt="Sigilance Logo" class="h-8 md:h-10 t-logo">
                 </a>
-                <span class="hidden sm:inline text-[10px] uppercase tracking-[0.25em] t-text-mut font-light">
+                <span class="hidden sm:inline text-[10px] uppercase tracking-[0.25em] t-gold font-light">
                     The Only Path
                 </span>
             </div>
@@ -639,7 +658,7 @@
         <!-- Linha 2: Currículos + Contato -->
         <div class="max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row justify-between items-center gap-6">
             <div id="resume-buttons" class="flex flex-wrap gap-4 justify-center"></div>
-            <div class="flex items-center gap-6">
+            <div class="flex items-center gap-5">
                 <a href="mailto:solutions@sigilance.com" class="t-footer-link transition-colors flex items-center gap-2">
                     <i class="fas fa-envelope"></i>
                     <span class="text-sm font-medium uppercase tracking-wider">
@@ -647,7 +666,10 @@
                         <span class="lang-pt">Enviar E-mail</span>
                     </span>
                 </a>
-                <a href="https://www.linkedin.com/in/fredchagas-sapsecurity" target="_blank" class="t-footer-link transition-colors text-xl">
+                <a href="https://wa.me/5500000000000" target="_blank" class="t-footer-link transition-colors text-lg" aria-label="WhatsApp">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/fredchagas-sapsecurity" target="_blank" class="t-footer-link transition-colors text-lg">
                     <i class="fab fa-linkedin"></i>
                 </a>
             </div>
@@ -774,9 +796,6 @@
 
         function applyTheme(theme) {
             document.documentElement.setAttribute('data-theme', theme);
-            /* Força reflow imediato para o navegador
-               recalcular todas as variáveis CSS sem
-               precisar de atualizar a página */
             void document.documentElement.offsetHeight;
         }
 
@@ -815,7 +834,6 @@
             document.getElementById('themeToast').classList.remove('visible');
         }
 
-        /* Se o usuário escolheu "Sistema", escuta mudanças do SO */
         window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
             var saved = localStorage.getItem('sigilance-theme');
             if (saved === 'system' || !saved) {
