@@ -24,53 +24,131 @@
     </script>
 
     <style>
-        /* ═══════════════════════════════════════════════════════════════════════
-           🎛️  PAINEL DE CONTROLE — EDITE TODAS AS CORES AQUI
-           ═══════════════════════════════════════════════════════════════════════ */
+        /* ═══════════════════════════════════════════════════════════════════════════
+           🎛️  PAINEL DE CONTROLE DO SITE — SIGILANCE
+           ═══════════════════════════════════════════════════════════════════════════
+           
+           Este painel está dividido por SEÇÕES do site.
+           Altere os valores, salve o arquivo e abra no navegador.
+           Cores em HEX (#000000) ou RGBA (rgba(0,0,0,0.5)).
+           ═══════════════════════════════════════════════════════════════════════════ */
 
+
+        /* ████████████████████████████████████████████████████████████████████████
+           🌞  TEMA CLARO (Padrão — estilo IBM / SAP)
+           ████████████████████████████████████████████████████████████████████████ */
         [data-theme="light"] {
-            --bg-primary: #ffffff;
-            --bg-secondary: #f4f5f7;
-            --bg-card: #ffffff;
+
+            /* ┌──────────────────────────────────────────────────────────────┐
+               │  🖥️  HEADER (Cabeçalho fixo no topo)                       │
+               │                                                            │
+               │  Contém: Logo | Lema "The Only Path" | Project ARIA |      │
+               │           The Architect | Botão Sol/Lua | Menu Mobile       │
+               └──────────────────────────────────────────────────────────────┘ */
+
+            /* Cor de fundo do cabeçalho (use rgba para deixar translúcido) */
             --bg-header: rgba(255, 255, 255, 0.88);
-            --text-primary: #16181d;
-            --text-secondary: #565e6c;
-            --text-muted: #6b7280;
+
+            /* Filtro da LOGO (para adaptar a cor ao tema)
+               none       → sem alteração (logo fica como é no arquivo)
+               invert(1)  → inverte cores (branco vira preto, etc.) */
+            --logo-filter: invert(1);
+
+            /* Cor DOURADA do lema "The Only Path" (no Header e no Footer)
+               #8b7230 → dourado escuro/sóbrio (atual)
+               #9a7b2e → dourado médio
+               #b8860b → dourado mais vibrante
+               #6b5a20 → dourado muito discreto
+               #a08030 → dourado quente */
             --gold: #8b7230;
-            --border-color: #dfe1e6;
-            --accent: #0f62fe;
-            --accent-hover: #0043ce;
-            --accent-bg: rgba(15, 98, 254, 0.08);
-            --accent-border: rgba(15, 98, 254, 0.25);
-            --hero-glow: rgba(15, 98, 254, 0.05);
+
+
+            /* ┌──────────────────────────────────────────────────────────────┐
+               │  🦶  FOOTER (Rodapé)                                       │
+               │                                                            │
+               │  Contém: Logo + Lema + Copyright (Linha 1)                │
+               │           Botões Currículo + Email + WhatsApp + LinkedIn   │
+               └──────────────────────────────────────────────────────────────┘ */
+
+            /* Cor de fundo do rodapé */
             --footer-bg: #f4f5f7;
-            --btn-primary-bg: #0f62fe;
-            --btn-primary-text: #ffffff;
-            --btn-primary-hover: #0043ce;
-            --btn-secondary-bg: transparent;
-            --btn-secondary-text: #16181d;
-            --btn-secondary-border: #dfe1e6;
-            --btn-secondary-hover-bg: rgba(0, 0, 0, 0.04);
+
+
+            /* ┌──────────────────────────────────────────────────────────────┐
+               │  🖼️  HERO (Seção principal com o título gigante)           │
+               │                                                            │
+               │  Contém: Título | Subtítulo | Botões "Explore" e "LinkedIn"│
+               └──────────────────────────────────────────────────────────────┘ */
+
+            /* Brilho sutil no fundo do Hero */
+            --hero-glow: rgba(15, 98, 254, 0.05);
+
+            /* BOTÃO PRINCIPAL ("Explore Project ARIA") */
+            --btn-primary-bg: #0f62fe;        /* Cor de fundo */
+            --btn-primary-text: #ffffff;      /* Cor do texto */
+            --btn-primary-hover: #0043ce;     /* Cor ao passar o mouse */
+
+            /* BOTÃO SECUNDÁRIO ("Connect on LinkedIn") */
+            --btn-secondary-bg: transparent;  /* Cor de fundo */
+            --btn-secondary-text: #16181d;    /* Cor do texto */
+            --btn-secondary-border: #dfe1e6;  /* Cor da borda */
+            --btn-secondary-hover-bg: rgba(0, 0, 0, 0.04); /* Fundo ao passar o mouse */
+
+
+            /* ┌──────────────────────────────────────────────────────────────┐
+               │  📦  CORES GERAIS (Afeta o site inteiro)                  │
+               │                                                            │
+               │  Contém: Fundos | Textos | Bordas | Cards | Seções        │
+               └──────────────────────────────────────────────────────────────┘ */
+
+            /* Fundos */
+            --bg-primary: #ffffff;            /* Fundo principal do site */
+            --bg-secondary: #f4f5f7;          /* Fundo de seções alternadas (ex: Project ARIA) */
+            --bg-card: #ffffff;               /* Fundo dos cards/caixas */
+
+            /* Textos */
+            --text-primary: #16181d;          /* Texto principal (títulos) */
+            --text-secondary: #565e6c;        /* Texto secundário (parágrafos) */
+            --text-muted: #6b7280;            /* Texto fraco (copyright, legendas) */
+
+            /* Bordas e Sombras */
+            --border-color: #dfe1e6;          /* Cor das linhas/bordas */
             --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
             --shadow-card-hover: 0 4px 16px rgba(0, 0, 0, 0.1);
+
+            /* Cor de Destaque (Links, ícones, hover dos cards) */
+            --accent: #0f62fe;                /* Cor principal */
+            --accent-hover: #0043ce;          /* Cor ao passar o mouse */
+
+            /* Badge/Tag (ex: "Status: In Development") */
+            --accent-bg: rgba(15, 98, 254, 0.08);     /* Fundo do badge */
+            --accent-border: rgba(15, 98, 254, 0.25);  /* Borda do badge */
         }
 
+
+        /* ████████████████████████████████████████████████████████████████████████
+           🌙  TEMA ESCURO (Seu tema original — estilo underground)
+           ████████████████████████████████████████████████████████████████████████ */
         [data-theme="dark"] {
-            --bg-primary: #0a0a0a;
-            --bg-secondary: #121212;
-            --bg-card: #1a1a1a;
+
+            /* ┌──────────────────────────────────────────────────────────────┐
+               │  🖥️  HEADER (Cabeçalho fixo no topo)                       │
+               └──────────────────────────────────────────────────────────────┘ */
             --bg-header: rgba(18, 18, 18, 0.88);
-            --text-primary: #e5e7eb;
-            --text-secondary: #9ca3af;
-            --text-muted: #6b7280;
+            --logo-filter: none;
             --gold: #c4a24e;
-            --border-color: #2d3748;
-            --accent: #60a5fa;
-            --accent-hover: #93c5fd;
-            --accent-bg: rgba(96, 165, 250, 0.1);
-            --accent-border: rgba(96, 165, 250, 0.3);
-            --hero-glow: rgba(30, 41, 59, 0.8);
+
+
+            /* ┌──────────────────────────────────────────────────────────────┐
+               │  🦶  FOOTER (Rodapé)                                       │
+               └──────────────────────────────────────────────────────────────┘ */
             --footer-bg: #121212;
+
+
+            /* ┌──────────────────────────────────────────────────────────────┐
+               │  🖼️  HERO (Seção principal com o título gigante)           │
+               └──────────────────────────────────────────────────────────────┘ */
+            --hero-glow: rgba(30, 41, 59, 0.8);
             --btn-primary-bg: #ffffff;
             --btn-primary-text: #000000;
             --btn-primary-hover: #e5e7eb;
@@ -78,31 +156,70 @@
             --btn-secondary-text: #ffffff;
             --btn-secondary-border: #2d3748;
             --btn-secondary-hover-bg: rgba(255, 255, 255, 0.05);
+
+
+            /* ┌──────────────────────────────────────────────────────────────┐
+               │  📦  CORES GERAIS (Afeta o site inteiro)                  │
+               └──────────────────────────────────────────────────────────────┘ */
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #121212;
+            --bg-card: #1a1a1a;
+            --text-primary: #e5e7eb;
+            --text-secondary: #9ca3af;
+            --text-muted: #6b7280;
+            --border-color: #2d3748;
             --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.3);
             --shadow-card-hover: 0 4px 16px rgba(0, 0, 0, 0.4);
+            --accent: #60a5fa;
+            --accent-hover: #93c5fd;
+            --accent-bg: rgba(96, 165, 250, 0.1);
+            --accent-border: rgba(96, 165, 250, 0.3);
         }
 
+
+        /* ████████████████████████████████████████████████████████████████████████
+           🔧  ELEMENTOS INDEPENDENTES (Idênticos nos dois temas)
+           ████████████████████████████████████████████████████████████████████████ */
+
+        /* ┌──────────────────────────────────────────────────────────────┐
+           │  💧  WATERMARK (Marca d'água central)                       │
+           │                                                             │
+           │  OPACIDADE: 0=invisível | 0.07=visível | 0.20=forte       │
+           │  FILTRO: none | invert(1) | brightness(0)                  │
+           └──────────────────────────────────────────────────────────────┘ */
         [data-theme="light"] {
             --watermark-opacity: 0.20;
             --watermark-filter: none;
         }
         [data-theme="dark"] {
-            --watermark-opacity: 0.10;
+            --watermark-opacity: 0.05;
             --watermark-filter: none;
         }
 
-        [data-theme="light"] { --logo-filter: invert(1); }
-        [data-theme="dark"]  { --logo-filter: none; }
+        /* ┌──────────────────────────────────────────────────────────────┐
+           │  🖥️  FONTE (Tipografia)                                      │
+           │  Para trocar: mude o link do Google Fonts no <head>         │
+           │  Pesos: 300=fininha | 400=normal | 600=semi | 700=bold     │
+           └──────────────────────────────────────────────────────────────┘ */
+        body {
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+        }
 
-        body { font-family: 'Inter', sans-serif; font-weight: 400; }
-
-        [data-theme="light"], [data-theme="dark"] {
-            --code-bg: #0d1117; --code-text: #8b949e; --code-line: #c9d1d9; --code-success: #3fb950;
+        /* ┌──────────────────────────────────────────────────────────────┐
+           │  💻  BLOCO DE CÓDIGO (Terminal — sempre escuro)              │
+           └──────────────────────────────────────────────────────────────┘ */
+        [data-theme="light"],
+        [data-theme="dark"] {
+            --code-bg: #0d1117;
+            --code-text: #8b949e;
+            --code-line: #c9d1d9;
+            --code-success: #3fb950;
         }
 
 
         /* ═══════════════════════════════════════════════════════════════════════
-           ⚙️  ABAIXO: ESTILOS DO SITE — NÃO PRECISA EDITAR
+           ⚙️  ABAIXO: MOTOR DO SITE — NÃO PRECISA EDITAR
            ═══════════════════════════════════════════════════════════════════════ */
 
         html { scroll-behavior: smooth; }
@@ -138,6 +255,7 @@
 
     <img src="watermark.png" alt="" class="watermark" aria-hidden="true">
 
+    <!-- ════════════ HEADER ════════════ -->
     <header class="fixed w-full z-50 t-header border-b">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex items-center gap-3">
@@ -159,6 +277,7 @@
         </div>
     </header>
 
+    <!-- ════════════ HERO ════════════ -->
     <section class="relative min-h-screen flex items-center pt-20 overflow-hidden">
         <div class="hero-glow absolute inset-0 z-0"></div>
         <div class="max-w-7xl mx-auto px-6 relative z-10">
@@ -179,6 +298,7 @@
         </div>
     </section>
 
+    <!-- ════════════ PROJECT ARIA ════════════ -->
     <section id="aria" class="py-24 t-section-alt border-y">
         <div class="max-w-7xl mx-auto px-6">
             <div class="flex flex-col md:flex-row items-center gap-12">
@@ -210,6 +330,7 @@
         </div>
     </section>
 
+    <!-- ════════════ THE ARCHITECT ════════════ -->
     <section id="architect" class="py-24">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
@@ -239,12 +360,12 @@
         </div>
     </section>
 
+    <!-- ════════════ FOOTER ════════════ -->
     <footer class="t-footer">
         <div class="border-b" style="border-color: var(--border-color)">
             <div class="max-w-7xl mx-auto px-6 py-6 flex flex-col items-center md:flex-row justify-between gap-2 md:gap-4">
                 <div class="flex flex-col items-center md:items-start gap-1">
                     <img src="logo.png" alt="Sigilance Logo" class="h-7 t-logo">
-                    <!-- md:hidden aqui: aparece no celular, some no desktop -->
                     <span class="md:hidden t-gold text-[10px] uppercase tracking-[0.25em] font-light">The Only Path</span>
                 </div>
                 <p class="t-text-mut text-xs uppercase tracking-widest">
